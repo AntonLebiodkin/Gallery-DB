@@ -1,0 +1,91 @@
+{% extends 'lab2_app/base.html' %}
+{% block content %}
+
+
+<ul class="nav nav-tabs">
+    <li><a href="#tab-1" data-toggle="tab">Завантажити дані</a></li>
+    <li><a href="#tab-2" data-toggle="tab">Переглянути дані</a></li>
+    <li><a href="#tab-3" id="tab-3-load" data-toggle="tab">CRUD</a></li>
+    <li><a href="#tab-4" data-toggle="tab">Пошук за атрибутом</a></li>
+    <li><a href="#tab-5" data-toggle="tab">Повнотекстовий пошук</a></li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div class="tab-pane active" id="tab-1">
+        <form action="loadcsv" method="post"> {% csrf_token %}
+            <h2 style="text-align: center;">Завантажити дані</h2>
+            <button type="submit" class="btn btn-primary btn-lg center-block">Завантажити</button>
+        </form>
+    </div>
+    <div class="tab-pane" id="tab-2">
+        <div class="col-lg-6 col-lg-offset-3">
+            <table class="table table-hover table-bordered table-responsive">
+                <caption>
+                    <h3 class="center-block">Photos</h3>
+                </caption>
+                <thead>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Place</th>
+                    <th>Photoalbum</th>
+                    <th>Author</th>
+                    <th>Format</th>
+                    <th>Price</th>
+
+                </thead>
+                <tbody>
+                    {%  for ph in response.photos %}
+                        <tr>
+                            <td>{{ ph.0 }}</td><td> {{  ph.1 }} </td><td> {{ ph.2 }} </td> <td> {{ ph.3 }} </td> <td> {{ ph.4 }} </td><td> {{ ph.5 }} </td><td> {{ ph.6 }} </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="tab-pane" id="tab-3">
+    </div>
+
+
+
+    <div class="tab-pane" id="tab-4">
+        <h3>Знайти фото за діапазоном ціни:</h3>
+        <label for="from">Починаючи з:</label>
+        <input type="number" id="from_price" name="from_price">
+        <label for="to">До:</label>
+        <input type="number" id="to_price" name="to_price">
+        <button class="btn btn-primary" id="search-photo">Знайти</button>
+
+
+
+        <h3>Знайти фото за фотографом:</h3>
+        <label for="gender">Оберіть стать фотографа</label>
+        <select name="gender" id="gender">
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+        </select>
+        <button class="btn btn-primary" id="search-author">Знайти</button>
+
+
+        <div class="search-photo-res"></div>
+        <div class="search-author-res"></div>
+    </div>
+    <div class="tab-pane" id="tab-5">
+        <h2>Повнотекстовий пошук</h2>
+        <label for="photo">Слово входить</label>
+        <input type="text" name="name" id="fulltext-name">
+        <button class="btn btn-primary fulltext-photo-search">Знайти</button>
+
+
+
+
+        <div id="fulltext-res">
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endblock %}

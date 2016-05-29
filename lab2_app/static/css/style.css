@@ -1,0 +1,32 @@
+h2 {
+    text-align: center;
+    margin: 50px;
+
+}
+
+#tab-1 form{
+    margin: 100px;
+}
+
+#crud-table tr td button .edit{
+    display: none;
+}
+#crud-table tr:hover  td button .edit{
+    display: inline-block;
+}
+
+
+#crud-table tr td button .delete{
+    display: none;
+}
+#crud-table tr:hover td button .delete{
+    display: inline-block;
+}
+#addPhoto {
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}

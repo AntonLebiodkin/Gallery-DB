@@ -1,0 +1,25 @@
+place,1,Ukraine,Kyiv
+place,2,Ukraine,Cherkasy
+place,3,Ukraine,Bila Tserkva
+place,4,Ukraine,Rivne
+place,5,Ukraine,Polonne
+place,6,Poland,Warsaw
+place,7,Poland,Krakow
+photoalbum,1,Different
+photoalbum,2,Private
+photoalbum,3,Nature
+photoalbum,4,People
+format,1,JPG
+format,2,JPEG
+format,3,BMP
+format,4,PNG
+format,5,GIF
+format,6,RAW
+author,1,Anton,Lebiodkin,1,19
+author,2,Bohdan,Yatsuk,1,19
+author,3,Nikita,Kholin,1,18
+author,4,Dasha,Bilogub,0,19
+author,5,Vasylyna,Ushatska,0,18
+photo,1,Kyiv Nature,1,3,5,1,350
+photo,2,Cherkasy Nature,2,3,1,1,100
+photo,3,Warsaw CLUBLIFE,5,2,2,4,500

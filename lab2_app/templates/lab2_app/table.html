@@ -1,0 +1,109 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<div class="col-lg-12">
+    <table class="table table-hover table-bordered table-responsive" id="crud-table">
+        <caption>
+            <h3 class="center-block">Photos</h3>
+        </caption>
+        <thead>
+            <th>#</th>
+            <th>Name</th>
+            <th>Place</th>
+            <th>Photoalbum</th>
+            <th>Author</th>
+            <th>Format</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {%  for ph in photos %}
+                <tr>
+                    <td>
+                        <p class="number">{{ ph.0 }}</p>
+                    </td>
+                    <td>
+                        <input type="text" class="edit edit-name" style="display: none">
+                        <p class="name">{{  ph.1 }}</p>
+                    </td>
+                    <td>
+                        <select class="input-large form-control edit edit-place" style="display: none"></select>
+                        <p class="place">{{ ph.2 }}</p>
+                    </td>
+                    <td>
+                        <select class="input-large form-control edit edit-photoalbum" style="display: none"></select>
+                        <p class="photoalbum">{{ ph.3 }}</p>
+                    </td>
+                    <td>
+                        <select class="input-large form-control edit edit-author" style="display: none"></select>
+                        <p class="author">{{ ph.4 }}</p>
+                    </td>
+                    <td>
+                        <select class="input-large form-control edit edit-format" style="display: none"></select>
+                        <p class="format">{{ ph.5 }}</p>
+                    </td>
+                    <td>
+                        <select class="input-large form-control edit edit-price" style="display: none"></select>
+                        <p class="price">{{ ph.6 }}</p>
+                    </td>
+                    <td class="action">
+
+                        <button type="submit" class="btn btn-success save-btn" style="display: none">Save</button>
+                        <button class="btn btn-warning edit-btn" >Edit</button>
+                        <button class="btn btn-danger delete-btn" >Delete</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<button type="button" data-toggle="modal" data-target="#add_modal" class="btn btn-lg btn-primary" id="addPhoto">+</button>
+
+
+<div id="add_modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="text-center">Add new photo</h3>
+                </div>
+                <div class="modal-body">
+                    <form method="get" action="add_photo" id="add_form" role="form">
+                        <div class="form-group">
+                            <label for="name">Photo name:</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Place:</label>
+                            <select class="input-large form-control add-place" id="place" name="place"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="photoalbum">Photoalbum:</label>
+                            <select class="input-large form-control add-photoalbum" id="photoalbum" name="photoalbum"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="author">Author:</label>
+                            <select class="input-large form-control add-author" id="author" name="author"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Format:</label>
+                            <select class="input-large form-control add-format" id="format" name="format"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price:</label>
+                            <input type="number" class="form-control" id="price" name="price">
+                        </div>
+                        <button type="button" data-dismiss="modal">Close</button>
+                        <input type="submit">
+                    </form>
+                </div>
+
+            </div>
+        </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="{% static 'js/frontend.js' %}"></script>
