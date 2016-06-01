@@ -69,11 +69,17 @@ def search_author(request):
         return HttpResponse(html)
 
 def get_match_photo(request):
+    print "MATCH"
     if request.method == "GET":
         photos = mydb.get_match_photo(request)
         html = render_to_string('lab2_app/table.html', {'photos': photos})
         return HttpResponse(html)
 
+def get_not_match_photo(request):
+    if request.method == "GET":
+        photos = mydb.get_not_match_photo(request)
+        html = render_to_string('lab2_app/table.html', {'photos': photos})
+        return HttpResponse(html)
 def get_authors(request):
     authors = mydb.getTable("author")
     return HttpResponse(json.dumps(authors), content_type = "application/json")

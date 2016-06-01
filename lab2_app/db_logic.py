@@ -132,7 +132,7 @@ class Database:
                             """.format(name))
             return cur.fetchall()
 
-    def getNotMatchPhoto(self, req):
+    def get_not_match_photo(self, req):
         with self.con:
             name = req.GET["name"]
             print name + " BACKEND FULLTEXT"
@@ -142,11 +142,11 @@ class Database:
                                INNER JOIN place\
                                ON photo.place_id = place.id\
                                INNER JOIN photoalbum\
-                               ON photo.photoalbum_id = photoalbum_id\
+                               ON photo.photoalbum_id = photoalbum.id\
                                INNER JOIN author\
                                ON photo.author_id = author.id\
                                INNER JOIN format\
                                on photo.format_id = format.id\
-                               WHERE MATCH(photo.name, photoalbum.name) AGAINST('{0}' IN BOOLEAN MODE)\
+                               WHERE NOT MATCH(photo.name, photoalbum.name) AGAINST('{0}' IN BOOLEAN MODE)\
                             """.format(name))
             return cur.fetchall()

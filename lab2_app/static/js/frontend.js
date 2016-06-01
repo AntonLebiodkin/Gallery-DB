@@ -134,14 +134,27 @@ $("#search-author").click(function(){
 
 });
 
-$(".fulltext-photo-search").click(function(){
-    name = $('#fulltext-name').val();
+$("#get-match-photo").click(function(){
+    var name = $('#match-photo').val();
     console.log(name)
 
 
-    console.log("GENDER " + gender);
 
-    $.get('fulltext_search', {"name": name}, function(data){
+    $.get('match_photo', {"name": name}, function(data){
+        //$('.search-author-res').children().remove();
+        $('#fulltext-res').children().remove();
+        $('#fulltext-res').append(data);
+    })
+
+});
+
+$("#get-not-match-photo").click(function(){
+    var name = $('#not-match-photo').val();
+    console.log(name)
+
+
+
+    $.get('not_match_photo', {"name": name}, function(data){
         //$('.search-author-res').children().remove();
         $('#fulltext-res').children().remove();
         $('#fulltext-res').append(data);
